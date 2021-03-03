@@ -1,8 +1,11 @@
 package com.truespring.restapi.service;
 
 import com.truespring.restapi.model.response.CommonResult;
+import com.truespring.restapi.model.response.ListResult;
 import com.truespring.restapi.model.response.SingleResult;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ResponseService {
@@ -46,6 +49,18 @@ public class ResponseService {
         setSuccessResult(result);
         return result;
     }
-    // TODO 5번 API 만들던거 마저하기
 
+    public CommonResult getFailResult() {
+        CommonResult result = new CommonResult();
+        result.setSuccess(false);
+        result.setCode(CommonResponse.FAIL.getCode());
+        result.setMsg(CommonResponse.FAIL.getMsg());
+        return result;
+    }
+
+    public void setSuccessResult(CommonResult result) {
+        result.setSuccess(true);
+        result.setCode(CommonResponse.SUCCESS.getCode());
+        result.setMsg(CommonResponse.SUCCESS.getMsg());
+    }
 }
