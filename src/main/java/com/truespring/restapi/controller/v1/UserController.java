@@ -66,5 +66,5 @@ public class UserController {
             @ApiParam(value = "회원번호", required = true) @PathVariable long msrl) {
         return responseService.getSuccessResult();
     }
-    // TODO 코드 작성 완료, 테스트 해보기
+    // TODO 입력 부분만 data 객체가 없음
 }
