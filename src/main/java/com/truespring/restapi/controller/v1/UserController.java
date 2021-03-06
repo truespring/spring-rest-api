@@ -37,13 +37,13 @@ public class UserController {
 
     @ApiOperation(value = "회원 입력", notes = "회원을 입력한다.")
     @PostMapping(value = "/user")
-    public User save(@ApiParam(value = "회원아이디", required = true) @RequestParam String uid,
-                     @ApiParam(value = "회원이름", required = true) @RequestParam String name) {
+    public SingleResult<User> save(@ApiParam(value = "회원아이디", required = true) @RequestParam String uid,
+                                   @ApiParam(value = "회원이름", required = true) @RequestParam String name) {
         User user = User.builder()
                 .uid(uid)
                 .name(name)
                 .build();
-        return userJpaRepo.save(user);
+        return responseService.getSingleResult(userJpaRepo.save(user));
     }
     
     @ApiOperation(value = "회원 수정", notes = "회원정보를 수정한다.")
@@ -66,5 +66,4 @@ public class UserController {
             @ApiParam(value = "회원번호", required = true) @PathVariable long msrl) {
         return responseService.getSuccessResult();
     }
-    // TODO 입력 부분만 data 객체가 없음
 }
