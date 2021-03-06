@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CommonResult {
+    // api의 처리 상태 및 메세지를 내려주는 데이터로 구성됨
 
     @ApiModelProperty(value = "응답 성공여부 : true/false")
     private boolean success;
