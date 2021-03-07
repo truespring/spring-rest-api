@@ -1,5 +1,6 @@
 package com.truespring.restapi.controller.v1;
 
+import com.truespring.restapi.advice.exception.CUserNotFoundException;
 import com.truespring.restapi.entity.User;
 import com.truespring.restapi.model.response.CommonResult;
 import com.truespring.restapi.model.response.ListResult;
@@ -34,7 +35,7 @@ public class UserController {
     @GetMapping(value = "/user/{msrl}")
     public SingleResult<User> findUserById(@ApiParam(value = "회원ID", required = true) @PathVariable long msrl) {
         // 결과데이터가 단일건인 경우 getSingleResult를 이용해서 결과 출력
-        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElse(null));
+        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElseThrow(CUserNotFoundException::new));
     }
 
     @ApiOperation(value = "회원 입력", notes = "회원을 입력한다.")
@@ -62,7 +63,7 @@ public class UserController {
         return responseService.getSingleResult(userJpaRepo.save(user));
     }
     
-    @ApiOperation(value = "회원삭제", notes = "userId로 회원정보를 삭제한다.")
+    @ApiOperation(value = "회원 삭제", notes = "userId로 회원정보를 삭제한다.")
     @DeleteMapping(value = "/user/{msrl}")
     public CommonResult delete(
             @ApiParam(value = "회원번호", required = true) @PathVariable long msrl) {
