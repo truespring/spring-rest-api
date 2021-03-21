@@ -33,7 +33,7 @@ public class MessageConfiguration implements WebMvcConfigurer {
         return lci;
     }
 
-    @Override
+    @Override // 인터셉터를 시스템 레지스르리에 등록
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
