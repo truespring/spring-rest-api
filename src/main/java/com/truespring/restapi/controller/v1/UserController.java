@@ -70,4 +70,6 @@ public class UserController {
         // 성공 결과 정보만 필요한경우 getSuccessResult()를 이용하여 결과를 출력한다.
         return responseService.getSuccessResult();
     }
+
+    // commit test
 }
