@@ -13,7 +13,10 @@ import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Api(tags = {"1. User"})
 @RequiredArgsConstructor
 @RestController
@@ -71,6 +74,21 @@ public class UserController {
         return responseService.getSuccessResult();
     }
 
-    // commit test
-    // issue 테스트
+    @ApiOperation(value = "맵 타입 테스트", notes = "Map타입으로 반환한다.")
+    @PutMapping(value = "/user/map")
+    public CommonResult modifyMapType(
+            @ApiParam(value = "회원번호", required = true) @RequestParam long msrl,
+            @ApiParam(value = "회원아이디", required = true) @RequestParam String uid,
+            @ApiParam(value = "회원이름", required = true) @RequestParam String name) {
+        Map<String, List<User>> resultMap = new HashMap<>();
+        User user = null;
+        user.setMsrl(msrl);
+        user.setUid(uid);
+        user.setName(name);
+        List<User> users = null;
+        users.add(user);
+        resultMap.put("", users);
+        return responseService.getMapResult(resultMap);
+    }
+
 }
