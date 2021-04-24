@@ -2,6 +2,7 @@ package com.truespring.restapi.service;
 
 import com.truespring.restapi.model.response.CommonResult;
 import com.truespring.restapi.model.response.ListResult;
+import com.truespring.restapi.model.response.MapResult;
 import com.truespring.restapi.model.response.SingleResult;
 import org.springframework.stereotype.Service;
 
@@ -39,11 +40,11 @@ public class ResponseService {
         return result;
     }
     // Map 결과를 처리하는 메소드
-    public <T> SingleResult<T> getMapResult(T data) {
-        SingleResult<T> result = new SingleResult<>();
-        result.setData(data);
+    public <T, K> MapResult<T, K> getMapResult(T String, K Object) {
+        MapResult<T, K> result = new MapResult<>();
+        result.setData(String, Object);
         setSuccessResult(result);
-        return result;
+        return result; // 현재 안됨
     }
     // 다중건 결과를 처리하는 메소드
     public <T> ListResult<T> getListResult(List<T> list) {

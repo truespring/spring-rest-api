@@ -10,4 +10,7 @@ import java.util.Map;
 public class MapResult<T, K> extends CommonResult {
 
     private Map<T, K> data;
+
+    public void setData(T string, K object) {
+    }
 }
