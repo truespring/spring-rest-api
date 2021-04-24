@@ -88,7 +88,7 @@ public class UserController {
         List<User> users = null;
         users.add(user);
         resultMap.put("", users);
-        return responseService.getMapResult(resultMap);
+        return responseService.getMapResult("result ", resultMap);
     }
 
 }
