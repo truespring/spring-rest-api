@@ -44,7 +44,7 @@ public class ResponseService {
         MapResult<T, K> result = new MapResult<>();
         result.setData(String, Object);
         setSuccessResult(result);
-        return result;
+        return result; // 현재 안됨
     }
     // 다중건 결과를 처리하는 메소드
     public <T> ListResult<T> getListResult(List<T> list) {
